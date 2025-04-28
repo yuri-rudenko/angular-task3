@@ -10,6 +10,6 @@ export const AddHeadersInterceptor: HttpInterceptorFn = (req, next) => {
     headers: req.headers.set('X-Token', userToken)
   })
 
-  return next(req);
+  return next(newReq);
 
 };

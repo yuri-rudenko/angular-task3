@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, tap} from 'rxjs';
+
 import url from '../constants/url';
 import User from '../models/user';
 import Report from '../models/report';
@@ -13,8 +14,14 @@ export class UserService {
   private http = inject(HttpClient);
 
   login(email: string, password: string): Observable<User> {
-    const result = this.http.post<User>(`${url}/api/login`, { email, password });
-    return result;
+    return this.http.post<User>(`${url}/api/login`, { email, password }).pipe(
+      tap(user => {
+        if(user?.token) {
+          console.log('user', user);
+          localStorage.setItem('userToken', user.token);
+        }
+      })
+    );
   }
 
   getReports(): Observable<Report[]> {
