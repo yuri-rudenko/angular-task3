@@ -8,7 +8,7 @@ import {ReportsStore} from '../../../../../core/state/reports.store';
   styleUrl: './landing.component.css'
 })
 export class LandingComponent implements OnInit {
-  store = inject(ReportsStore)
+  store = inject(ReportsStore);
 
   ngOnInit() {
     this.store.loadAll();

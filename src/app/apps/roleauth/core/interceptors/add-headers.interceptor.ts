@@ -4,6 +4,8 @@ export const AddHeadersInterceptor: HttpInterceptorFn = (req, next) => {
 
   const userToken = localStorage.getItem('userToken');
 
+  console.log(req);
+
   if(!userToken) return next(req);
 
   const newReq = req.clone({

@@ -16,6 +16,7 @@ export const ReportsStore = signalStore(
     const userService = inject(UserService);
 
     return {
+
       async loadAll() {
         patchState(store, { loading: true });
 
@@ -25,6 +26,10 @@ export const ReportsStore = signalStore(
         } else {
           patchState(store, { loading: false });
         }
+      },
+
+      reset() {
+        patchState(store, { reports: [], loading: false });
       }
     };
   })

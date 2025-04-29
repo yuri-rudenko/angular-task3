@@ -1,0 +1,7 @@
+<header>
+  <button (click)="onExit()" mat-flat-button >Exit</button>
+    @if(isAdmin) {
+    <button routerLink="/apanel" mat-flat-button >APANEL</button>
+  }
+</header>
+<router-outlet></router-outlet>
